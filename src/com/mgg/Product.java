@@ -18,6 +18,8 @@ import java.util.List;
  */
 public class Product extends Item {
 	
+	private double quantity;
+	
 	public Product(String code, String type, String name, String basePrice) {
 		super(code, type, name, basePrice);
 	}
@@ -33,5 +35,7 @@ public class Product extends Item {
 		itemInfo.add(this.getPrice());
 		return itemInfo;
 	}
+	
+	
 	
 }

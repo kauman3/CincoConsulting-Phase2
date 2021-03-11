@@ -35,7 +35,7 @@ public class LoadCSVData {
             String token[] = firstLine.split(",");
             int n = Integer.parseInt(token[0]);
             
-            for(int i =0; i<n; i++) {
+            for(int i=0; i<n; i++) {
                 String line = s.nextLine();
                 String tokens[] = line.split(",");
                 Address address = new Address(tokens[4], tokens[5], tokens[6], tokens[7], tokens[8]);
@@ -75,7 +75,7 @@ public class LoadCSVData {
                 String tokens[] = line.split(",");
                 Address address = new Address(tokens[2], tokens[3], tokens[4], tokens[5], tokens[6]);
                 for(Person p : persons) {
-                	if(tokens[1].contentEquals(p.getCode())) {
+                	if(tokens[1].contentEquals(p.getPersonCode())) {
                 		stores.add(new Store(tokens[0], p, address));
                 	}
                 }
@@ -88,7 +88,7 @@ public class LoadCSVData {
     }
     
     /**
-     * Takes a CSV file with Sales Item data and stores it in an ArrayList of Sales Items
+     * Takes a CSV file with Item data and stores it in an ArrayList of Items
      * @param file
      * @return
      */
@@ -119,6 +119,54 @@ public class LoadCSVData {
             throw new RuntimeException(fnfe);
         }
         return items;
+    }
+    
+    /**
+     * Takes a CSV file with Sales data and stores it in an ArrayList of Sales
+     * @param file
+     * @return
+     */
+    public static List<Sale> loadSaleData(String file, List<Person> persons, List <Store> stores, List<Item> items) {
+    	
+    	List<Sale> sales = new ArrayList<>();
+    	try {
+            Scanner s = new Scanner(new File(file));
+            String firstLine = s.nextLine();
+            String token[] = firstLine.split(",");
+            int n = Integer.parseInt(token[0]);
+            
+            for(int i=0; i<n; i++) {
+            	String line = s.nextLine();
+                String tokens[] = line.split(",");
+                Employee customer = new Employee();
+                Customer salesperson = new Customer();
+            	for(Person p : persons) {
+            		if(p.getPersonCode().contentEquals(tokens[2])) {
+            			customer.setPersonValues(customer, p);
+            		}
+            		if(p.getPersonCode().contentEquals(tokens[3])) {
+            			salesperson.setPersonValues(customer, p);
+            			//salesperson.setNumSales(salesperson.getNumSales() + 1);
+            			//salesperson.setSalesGrandTotal(salesperson.getSalesGrandTotal() + item.getPrice());
+            		}
+            	}
+        		sales.add(new Sale(tokens[0], tokens[1], customer, salesperson));
+//            	List<Item> salesItems = new ArrayList<>();
+//                String line = s.nextLine();
+//                String tokens[] = line.split(",");
+//                for(Item item : items) {
+//                	if(line.length() > 7 && item.getCode().contentEquals(tokens[4])) {
+//                		salesItems.add(item);
+//                		sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], salesItems));
+//                	}
+//                }
+//                //sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3]));
+            }
+            s.close();
+        } catch (FileNotFoundException fnfe) {
+            throw new RuntimeException(fnfe);
+        }
+    	return sales;
     }
 	
 }

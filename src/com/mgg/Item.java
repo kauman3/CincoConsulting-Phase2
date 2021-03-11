@@ -63,5 +63,4 @@ public abstract class Item {
 	 * @return
 	 */
 	public abstract List<String> getItemInfo();
-	
 }

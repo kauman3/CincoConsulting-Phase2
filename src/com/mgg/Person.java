@@ -38,47 +38,116 @@ public class Person {
 	public Person(String personCode, String type, String firstName, String lastName, Address address) {
 		this(personCode, type, firstName, lastName, address, Collections.emptyList());
 	}
+	
+	public Person() {
+		this.personCode = "";
+		this.type = "";
+		this.firstName = "";
+		this.lastName = "";
+		this.address = null;
+		this.emails = null;
+	}
+	
+//	public void setPersonValues(Person p) {
+//		this.personCode = p.getPersonCode();
+//		this.type = p.getType();
+//		this.firstName = p.getFirstName();
+//		this.lastName = p.getLastName();
+//		this.address = p.getAddress();
+//		this.emails = p.getEmails();
+//	}
+	
+	public void setPersonValues(Person i, Person j) {
+		i.setPersonCode(j.getPersonCode());
+		i.setType(j.getType());
+		i.setFirstName(j.getFirstName());
+		i.setLastName(j.getLastName());
+		i.setAddress(j.getAddress());
+		i.setEmails(j.getEmails());
+	}
+	
+	/**
+	 * @return the personCode
+	 */
+	public String getPersonCode() {
+		return personCode;
+	}
 
 	/**
-	 * @return the code
+	 * @param personCode the personCode to set
 	 */
-	public String getCode() {
-		return this.personCode;
+	public void setPersonCode(String personCode) {
+		this.personCode = personCode;
 	}
 
 	/**
 	 * @return the type
 	 */
 	public String getType() {
-		return this.type;
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	/**
 	 * @return the lastName
 	 */
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	/**
 	 * @return the address
 	 */
 	public Address getAddress() {
-		return this.address;
+		return address;
+	}
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	/**
 	 * @return the emails
 	 */
 	public List<String> getEmails() {
-		return this.emails;
+		return emails;
+	}
+
+	/**
+	 * @param emails the emails to set
+	 */
+	public void setEmails(List<String> emails) {
+		this.emails = emails;
 	}
 	
 }

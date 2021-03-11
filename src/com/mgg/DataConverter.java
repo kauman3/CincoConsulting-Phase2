@@ -27,6 +27,18 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  *
  */
 public class DataConverter {
+	
+	//can be changed later to seperate differnt customer types as well
+	public static List<Employee> getEmployeeList (List<Person> persons) {
+		List<Employee> employees = new ArrayList<>();
+			
+		for(Person p : persons) {
+			if(p.getType().contentEquals("E")) {
+				employees.add((Employee) p);
+			}
+		}
+		return employees;
+	}
 
     public static void main(String[] args) {
 
@@ -36,10 +48,15 @@ public class DataConverter {
         List<Store> stores = LoadCSVData.loadStoreData(storesFile, persons);
         String itemsFile = "data/Items.csv";
         List<Item> items = LoadCSVData.loadItemData(itemsFile);
+        String salesFile = "data/Sales.csv";
+        List<Sale> sales = LoadCSVData.loadSaleData(salesFile, persons, stores, items);
         
         PrintXML.personsToXML(persons);
         PrintXML.storesToXML(stores);
         PrintXML.itemsToXML(items);
+        
+        //TODO: produce reports of sales
+        //Sale.employeeSalesReport(sales);
     }
     
 }
