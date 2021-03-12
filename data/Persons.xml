@@ -1,22 +1,4 @@
 <Employee>
-  <personCode>ttg420</personCode>
-  <type>E</type>
-  <firstName>Quinn</firstName>
-  <lastName>Jeffrey</lastName>
-  <address>
-    <street>601 Lotheville Road</street>
-    <city>Savannah</city>
-    <state>GA</state>
-    <zip>31405</zip>
-    <country>US</country>
-  </address>
-  <emails>
-    <string>squarry0@reverbnation.com</string>
-    <string>squarry0@salon.com</string>
-  </emails>
-</Employee>
-<Employee>
-  <personCode>7632l9</personCode>
   <type>E</type>
   <firstName>Michelle</firstName>
   <lastName>Micah</lastName>
@@ -34,25 +16,25 @@
     <string>nmichelotti1@patch.com</string>
   </emails>
 </Employee>
-<Employee>
-  <personCode>aa887a</personCode>
-  <type>E</type>
-  <firstName>Levi</firstName>
-  <lastName>Yip</lastName>
+<Customer>
+  <type>C</type>
+  <firstName>Mark</firstName>
+  <lastName>Spice</lastName>
   <address>
-    <street>65337 Straubel Place</street>
-    <city>Muncie</city>
-    <state>IN</state>
-    <zip>47306</zip>
+    <street>3 5th Junction</street>
+    <city>Fort Collins</city>
+    <state>CO</state>
+    <zip>80525</zip>
     <country>US</country>
   </address>
   <emails>
-    <string>wleavold2@npr.org</string>
-    <string>wleavold2@craigslist.org</string>
+    <string>rantoshina@cam.ac.uk</string>
+    <string>rantoshina@amazonaws.com</string>
+    <string>rantoshina@economist.com</string>
+    <string>rantoshina@sfgate.com</string>
   </emails>
-</Employee>
+</Customer>
 <PlatinumCustomer>
-  <personCode>beta4L</personCode>
   <type>P</type>
   <firstName>Connor</firstName>
   <lastName>Zarya</lastName>
@@ -71,7 +53,6 @@
   </emails>
 </PlatinumCustomer>
 <PlatinumCustomer>
-  <personCode>48b5dc</personCode>
   <type>P</type>
   <firstName>Larry</firstName>
   <lastName>West</lastName>
@@ -89,7 +70,6 @@
   </emails>
 </PlatinumCustomer>
 <PlatinumCustomer>
-  <personCode>abc123</personCode>
   <type>P</type>
   <firstName>Stacy</firstName>
   <lastName>Summers</lastName>
@@ -106,8 +86,22 @@
     <string>bstammers5@cpanel.net</string>
   </emails>
 </PlatinumCustomer>
+<Employee>
+  <type>E</type>
+  <firstName>Young</firstName>
+  <lastName>Thug</lastName>
+  <address>
+    <street>3984 Jeff Street</street>
+    <city>Phoenix</city>
+    <state>AZ</state>
+    <zip>85099</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>SlimeyYSL@gmail.com</string>
+  </emails>
+</Employee>
 <GoldCustomer>
-  <personCode>tre43r</personCode>
   <type>G</type>
   <firstName>John</firstName>
   <lastName>Smith</lastName>
@@ -124,8 +118,68 @@
     <string>guttley6@latimes.com</string>
   </emails>
 </GoldCustomer>
+<Employee>
+  <type>E</type>
+  <firstName>Gunna</firstName>
+  <lastName>Wunna</lastName>
+  <address>
+    <street>18913 Chandler St</street>
+    <city>Omaha</city>
+    <state>NE</state>
+    <zip>68136</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>YoungGunna@gmail.com</string>
+  </emails>
+</Employee>
+<Employee>
+  <type>E</type>
+  <firstName>Quinn</firstName>
+  <lastName>Jeffrey</lastName>
+  <address>
+    <street>601 Lotheville Road</street>
+    <city>Savannah</city>
+    <state>GA</state>
+    <zip>31405</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>squarry0@reverbnation.com</string>
+    <string>squarry0@salon.com</string>
+  </emails>
+</Employee>
+<Employee>
+  <type>E</type>
+  <firstName>Superman</firstName>
+  <lastName>Yerp</lastName>
+  <address>
+    <street>69420 Nice Street</street>
+    <city>Gainesville</city>
+    <state>FL</state>
+    <zip>32605</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>Yerpsuper@firefox.com</string>
+  </emails>
+</Employee>
+<Employee>
+  <type>E</type>
+  <firstName>Little</firstName>
+  <lastName>Keed</lastName>
+  <address>
+    <street>1234 Apple Street</street>
+    <city>Los Angeles</city>
+    <state>CA</state>
+    <zip>35815</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>wavyKeed@gmail.com</string>
+  </emails>
+</Employee>
 <GoldCustomer>
-  <personCode>4321d7</personCode>
   <type>G</type>
   <firstName>James</firstName>
   <lastName>Fernando</lastName>
@@ -143,26 +197,7 @@
     <string>fhalse7@moonfruit.com</string>
   </emails>
 </GoldCustomer>
-<GoldCustomer>
-  <personCode>f22d0b</personCode>
-  <type>G</type>
-  <firstName>George</firstName>
-  <lastName>Dennison</lastName>
-  <address>
-    <street>40 Aberg Avenue</street>
-    <city>Fresno</city>
-    <state>CA</state>
-    <zip>93786</zip>
-    <country>US</country>
-  </address>
-  <emails>
-    <string>dwitherbed8@umich.edu</string>
-    <string>dwitherbed8@pbs.org</string>
-    <string>dwitherbed8@privacy.gov.au</string>
-  </emails>
-</GoldCustomer>
 <Customer>
-  <personCode>d78da4</personCode>
   <type>C</type>
   <firstName>Solomon</firstName>
   <lastName>Kellen</lastName>
@@ -180,27 +215,24 @@
     <string>ksoloway9@unicef.org</string>
   </emails>
 </Customer>
-<Customer>
-  <personCode>87ttg5</personCode>
-  <type>C</type>
-  <firstName>Mark</firstName>
-  <lastName>Spice</lastName>
+<GoldCustomer>
+  <type>G</type>
+  <firstName>George</firstName>
+  <lastName>Dennison</lastName>
   <address>
-    <street>3 5th Junction</street>
-    <city>Fort Collins</city>
-    <state>CO</state>
-    <zip>80525</zip>
+    <street>40 Aberg Avenue</street>
+    <city>Fresno</city>
+    <state>CA</state>
+    <zip>93786</zip>
     <country>US</country>
   </address>
   <emails>
-    <string>rantoshina@cam.ac.uk</string>
-    <string>rantoshina@amazonaws.com</string>
-    <string>rantoshina@economist.com</string>
-    <string>rantoshina@sfgate.com</string>
+    <string>dwitherbed8@umich.edu</string>
+    <string>dwitherbed8@pbs.org</string>
+    <string>dwitherbed8@privacy.gov.au</string>
   </emails>
-</Customer>
+</GoldCustomer>
 <Customer>
-  <personCode>89a8a1</personCode>
   <type>C</type>
   <firstName>Pepper</firstName>
   <lastName>Portia</lastName>
@@ -216,7 +248,22 @@
   </emails>
 </Customer>
 <Employee>
-  <personCode>aa887a</personCode>
+  <type>E</type>
+  <firstName>Levi</firstName>
+  <lastName>Yip</lastName>
+  <address>
+    <street>65337 Straubel Place</street>
+    <city>Muncie</city>
+    <state>IN</state>
+    <zip>47306</zip>
+    <country>US</country>
+  </address>
+  <emails>
+    <string>wleavold2@npr.org</string>
+    <string>wleavold2@craigslist.org</string>
+  </emails>
+</Employee>
+<Employee>
   <type>E</type>
   <firstName>John </firstName>
   <lastName>JohnnyDrip</lastName>
@@ -229,69 +276,5 @@
   </address>
   <emails>
     <string>JohnnyDrip@gman.com</string>
-  </emails>
-</Employee>
-<Employee>
-  <personCode>fdc227</personCode>
-  <type>E</type>
-  <firstName>Superman</firstName>
-  <lastName>Yerp</lastName>
-  <address>
-    <street>69420 Nice Street</street>
-    <city>Gainesville</city>
-    <state>FL</state>
-    <zip>32605</zip>
-    <country>US</country>
-  </address>
-  <emails>
-    <string>Yerpsuper@firefox.com</string>
-  </emails>
-</Employee>
-<Employee>
-  <personCode>abc124</personCode>
-  <type>E</type>
-  <firstName>Young</firstName>
-  <lastName>Thug</lastName>
-  <address>
-    <street>3984 Jeff Street</street>
-    <city>Phoenix</city>
-    <state>AZ</state>
-    <zip>85099</zip>
-    <country>US</country>
-  </address>
-  <emails>
-    <string>SlimeyYSL@gmail.com</string>
-  </emails>
-</Employee>
-<Employee>
-  <personCode>fdc269</personCode>
-  <type>E</type>
-  <firstName>Gunna</firstName>
-  <lastName>Wunna</lastName>
-  <address>
-    <street>18913 Chandler St</street>
-    <city>Omaha</city>
-    <state>NE</state>
-    <zip>68136</zip>
-    <country>US</country>
-  </address>
-  <emails>
-    <string>YoungGunna@gmail.com</string>
-  </emails>
-</Employee>
-<Employee>
-  <personCode>yoo420</personCode>
-  <type>E</type>
-  <firstName>Little</firstName>
-  <lastName>Keed</lastName>
-  <address>
-    <street>1234 Apple Street</street>
-    <city>Los Angeles</city>
-    <state>CA</state>
-    <zip>35815</zip>
-    <country>US</country>
-  </address>
-  <emails>
-    <string>wavyKeed@gmail.com</string>
   </emails>
 </Employee>

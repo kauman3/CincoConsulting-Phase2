@@ -1,7 +1,6 @@
 <Store>
-  <storeCode>ed1234</storeCode>
+  <code>ed1234</code>
   <manager>
-    <personCode>ttg420</personCode>
     <type>E</type>
     <firstName>Quinn</firstName>
     <lastName>Jeffrey</lastName>
@@ -26,36 +25,8 @@
   </address>
 </Store>
 <Store>
-  <storeCode>94pf32</storeCode>
+  <code>94pf32</code>
   <manager>
-    <personCode>aa887a</personCode>
-    <type>E</type>
-    <firstName>Levi</firstName>
-    <lastName>Yip</lastName>
-    <address>
-      <street>65337 Straubel Place</street>
-      <city>Muncie</city>
-      <state>IN</state>
-      <zip>47306</zip>
-      <country>US</country>
-    </address>
-    <emails>
-      <string>wleavold2@npr.org</string>
-      <string>wleavold2@craigslist.org</string>
-    </emails>
-  </manager>
-  <address>
-    <street>1234 Apple Street</street>
-    <city>Los Angeles</city>
-    <state>CA</state>
-    <zip>35815</zip>
-    <country>US</country>
-  </address>
-</Store>
-<Store>
-  <storeCode>94pf32</storeCode>
-  <manager>
-    <personCode>aa887a</personCode>
     <type>E</type>
     <firstName>John </firstName>
     <lastName>JohnnyDrip</lastName>
@@ -79,9 +50,8 @@
   </address>
 </Store>
 <Store>
-  <storeCode>73668b</storeCode>
+  <code>73668b</code>
   <manager>
-    <personCode>ttg420</personCode>
     <type>E</type>
     <firstName>Quinn</firstName>
     <lastName>Jeffrey</lastName>
@@ -106,9 +76,8 @@
   </address>
 </Store>
 <Store>
-  <storeCode>96f2cf</storeCode>
+  <code>96f2cf</code>
   <manager>
-    <personCode>ttg420</personCode>
     <type>E</type>
     <firstName>Quinn</firstName>
     <lastName>Jeffrey</lastName>
@@ -133,36 +102,8 @@
   </address>
 </Store>
 <Store>
-  <storeCode>69x420</storeCode>
+  <code>69x420</code>
   <manager>
-    <personCode>aa887a</personCode>
-    <type>E</type>
-    <firstName>Levi</firstName>
-    <lastName>Yip</lastName>
-    <address>
-      <street>65337 Straubel Place</street>
-      <city>Muncie</city>
-      <state>IN</state>
-      <zip>47306</zip>
-      <country>US</country>
-    </address>
-    <emails>
-      <string>wleavold2@npr.org</string>
-      <string>wleavold2@craigslist.org</string>
-    </emails>
-  </manager>
-  <address>
-    <street>360 Noscope Plaza</street>
-    <city>Wichita</city>
-    <state>KS</state>
-    <zip>67230</zip>
-    <country>US</country>
-  </address>
-</Store>
-<Store>
-  <storeCode>69x420</storeCode>
-  <manager>
-    <personCode>aa887a</personCode>
     <type>E</type>
     <firstName>John </firstName>
     <lastName>JohnnyDrip</lastName>

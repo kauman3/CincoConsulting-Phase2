@@ -29,10 +29,24 @@ public class Sale {
 	}
 	
 	/**
+	 * @return the saleCode
+	 */
+	public String getSaleCode() {
+		return saleCode;
+	}
+
+	/**
 	 * @return the storeCode
 	 */
 	public String getStoreCode() {
 		return storeCode;
+	}
+	
+	/**
+	 * @return the customerCode
+	 */
+	public String getCustomerCode() {
+		return customerCode;
 	}
 
 	/**

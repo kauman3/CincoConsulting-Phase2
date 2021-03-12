@@ -28,25 +28,57 @@ public class PrintXML {
      * Outputs the given Person List to an XML file
      * @param persons
      */
-    public static void personsToXML(List<Person> persons) {
+//    public static void personsToXML(List<Person> persons) {
+//    	
+//    	XStream xstream = new XStream(new DomDriver());
+//        xstream.alias("Person", Person.class);
+//        String xml = new String();
+//        
+//        for(Person p : persons) {
+//        	if(p.getType().contentEquals("C")) {
+//        		xstream.alias("Customer", Person.class);
+//        		xml = xml + xstream.toXML(p) + "\n";
+//        	} else if(p.getType().contentEquals("G")) {
+//        		xstream.alias("GoldCustomer", Person.class);
+//        		xml = xml + xstream.toXML(p) + "\n";
+//        	} else if(p.getType().contentEquals("P")) {
+//        		xstream.alias("PlatinumCustomer", Person.class);
+//        		xml = xml + xstream.toXML(p) + "\n";
+//        	} else {
+//        		xstream.alias("Employee", Person.class);
+//        		xml = xml + xstream.toXML(p) + "\n";
+//        	}
+//        }
+//        File personsXMLFile = new File("data/Persons.xml");
+//        try {
+//        	PrintWriter pw = new PrintWriter(personsXMLFile);
+//        	pw.print(xml);
+//        	pw.close();
+//        } catch (FileNotFoundException e) {
+//        	e.printStackTrace();
+//        }
+//        return;
+//    }
+    
+    public static void personsToXML(Map<String, Person> persons) {
     	
     	XStream xstream = new XStream(new DomDriver());
         xstream.alias("Person", Person.class);
         String xml = new String();
         
-        for(Person p : persons) {
-        	if(p.getType().contentEquals("C")) {
+        for(String str : persons.keySet()) {
+        	if(persons.get(str).getType().contentEquals("C")) {
         		xstream.alias("Customer", Person.class);
-        		xml = xml + xstream.toXML(p) + "\n";
-        	} else if(p.getType().contentEquals("G")) {
+        		xml = xml + xstream.toXML(persons.get(str)) + "\n";
+        	} else if(persons.get(str).getType().contentEquals("G")) {
         		xstream.alias("GoldCustomer", Person.class);
-        		xml = xml + xstream.toXML(p) + "\n";
-        	} else if(p.getType().contentEquals("P")) {
+        		xml = xml + xstream.toXML(persons.get(str)) + "\n";
+        	} else if(persons.get(str).getType().contentEquals("P")) {
         		xstream.alias("PlatinumCustomer", Person.class);
-        		xml = xml + xstream.toXML(p) + "\n";
+        		xml = xml + xstream.toXML(persons.get(str)) + "\n";
         	} else {
         		xstream.alias("Employee", Person.class);
-        		xml = xml + xstream.toXML(p) + "\n";
+        		xml = xml + xstream.toXML(persons.get(str)) + "\n";
         	}
         }
         File personsXMLFile = new File("data/Persons.xml");

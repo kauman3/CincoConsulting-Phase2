@@ -31,13 +31,13 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class DataConverter {
 	
 	/**
-	 * Takes a CSV file with Person data and stores it in an ArrayList of Persons
+	 * Takes a CSV file with Person data and stores it in a Map with personId keys and Person values
 	 * @param file
 	 * @return
 	 */
-    public static List<Person> loadPersonData(String file) {
+	public static Map<String, Person> loadPersonData(String file) {
 
-        List<Person> persons = new ArrayList<>();
+        Map<String, Person> idToPerson = new HashMap<>();
         try {
             Scanner s = new Scanner(new File(file));
             String firstLine = s.nextLine();
@@ -49,20 +49,22 @@ public class DataConverter {
                 String tokens[] = line.split(",");
                 Address address = new Address(tokens[4], tokens[5], tokens[6], tokens[7], tokens[8]);
                 if(tokens.length <= 9) {
-                    persons.add(new Person(tokens[0], tokens[1], tokens[2], tokens[3], address));
+                	Person p = new Person(tokens[1], tokens[2], tokens[3], address);
+                	idToPerson.put(tokens[0], p);
                 } else { 
                 	List<String> emailList = new ArrayList<>();
                     for(int j=9; j<tokens.length; j++) {
                         emailList.add(tokens[j]);
                     }
-                    persons.add(new Person(tokens[0], tokens[1], tokens[2], tokens[3], address, emailList));
+                    Person p = new Person(tokens[1], tokens[2], tokens[3], address, emailList);
+                	idToPerson.put(tokens[0], p);
                 }
             }
             s.close();
         } catch (FileNotFoundException fnfe) {
             throw new RuntimeException(fnfe);
         }
-        return persons;
+        return idToPerson;
     }
     
     /**
@@ -70,7 +72,7 @@ public class DataConverter {
      * @param file
      * @return
      */
-    public static List<Store> loadStoreData(String file, List<Person> persons) {
+	public static List<Store> loadStoreData(String file, Map<String, Person> persons) {
     	
     	List<Store> stores = new ArrayList<>();
         try {
@@ -83,9 +85,9 @@ public class DataConverter {
                 String line = s.nextLine();
                 String tokens[] = line.split(",");
                 Address address = new Address(tokens[2], tokens[3], tokens[4], tokens[5], tokens[6]);
-                for(Person p : persons) {
-                	if(tokens[1].contentEquals(p.getCode())) {
-                		stores.add(new Store(tokens[0], p, address));
+                for(String str : persons.keySet()) {
+                	if(tokens[1].contentEquals(str)) {
+                		stores.add(new Store(tokens[0], persons.get(str), address));
                 	}
                 }
             }
@@ -101,7 +103,7 @@ public class DataConverter {
      * @param file
      * @return
      */
-    public static Map<String, Item> loadItemData(String file) {
+	public static Map<String, Item> loadItemData(String file) {
     	
     	Map<String, Item> idToItem = new HashMap<>();
         try {
@@ -134,7 +136,7 @@ public class DataConverter {
      * @param file
      * @return
      */
-    public static List<Sale> loadSaleData(String file, List<Person> persons, List <Store> stores, Map<String, Item> itemsMap) {
+public static List<Sale> loadSaleData(String file) {
     	
     	List<Sale> sales = new ArrayList<>();
     	try {
@@ -163,24 +165,21 @@ public class DataConverter {
         }
     	return sales;
     }
-
-    public static void main(String[] args) {
-
-        String personsFile = "data/Persons.csv";
-        List<Person> persons = loadPersonData(personsFile);
+	
+	public static void main(String[] args) {
+		
+		String personsFile = "data/Persons.csv";
+        Map<String, Person> persons = loadPersonData(personsFile);
         String storesFile = "data/Stores.csv";
         List<Store> stores = loadStoreData(storesFile, persons);
         String itemsFile = "data/Items.csv";
         Map<String, Item> idToItem = loadItemData(itemsFile);
         String salesFile = "data/Sales.csv";
-        List<Sale> sales = loadSaleData(salesFile, persons, stores, idToItem);
-        
+        List<Sale> sales = loadSaleData(salesFile);
+
         PrintXML.personsToXML(persons);
         PrintXML.storesToXML(stores);
         PrintXML.itemsToXML(idToItem);
-        
-        //TODO: produce reports of sales
-        //Sale.employeeSalesReport(sales);
     }
     
 }
