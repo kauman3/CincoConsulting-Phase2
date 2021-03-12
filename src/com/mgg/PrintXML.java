@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -84,42 +85,43 @@ public class PrintXML {
     }
     
     /**
-     * Outputs the given Item List to an XML file
+     * Outputs the given Integer to Item List Map to an XML file with the Item data
      * @param items
      */
-    public static void itemsToXML(List<Item> items) {
+    public static void itemsToXML(Map<String, Item> itemsMap) {
     	
     	XStream xstream = new XStream(new DomDriver());
     	xstream.alias("Items", Item.class);
         String xml = new String();
         
-        for(Item i : items) {
-        	if(i.getType().contentEquals("PN")) {
-        		xstream.alias("NewProduct", Product.class);
-        		xml = xml + xstream.toXML(i) + "\n";
-        	} else if(i.getType().contentEquals("PU")) {
-        		xstream.alias("UsedProduct", Product.class);
-        		xml = xml + xstream.toXML(i) + "\n";
-        	} else if(i.getType().contentEquals("PG")) {
-        		xstream.alias("GiftCard", Product.class);
-        		xml = xml + xstream.toXML(i) + "\n";
-        	} else if(i.getType().contentEquals("SV")) {
-        		xstream.alias("Service", Product.class);
-        		xml = xml + xstream.toXML(i) + "\n";
+        for(String s : itemsMap.keySet()) {
+        	if(itemsMap.get(s).getType().contentEquals("PN")) {
+        		xstream.alias("NewProduct", Item.class);
+        		xml = xml + xstream.toXML(itemsMap.get(s)) + "\n";
+        	} else if(itemsMap.get(s).getType().contentEquals("PU")) {
+        		xstream.alias("UsedProduct", Item.class);
+        		xml = xml + xstream.toXML(itemsMap.get(s)) + "\n";
+        	} else if(itemsMap.get(s).getType().contentEquals("PG")) {
+        		xstream.alias("GiftCard", Item.class);
+        		xml = xml + xstream.toXML(itemsMap.get(s)) + "\n";
+        	} else if(itemsMap.get(s).getType().contentEquals("SV")) {
+        		xstream.alias("Service", Item.class);
+        		xml = xml + xstream.toXML(itemsMap.get(s)) + "\n";
         	} else {
-        		xstream.alias("Subscription", Product.class);
-        		xml = xml + xstream.toXML(i) + "\n";
+        		xstream.alias("Subscription", Item.class);
+        		xml = xml + xstream.toXML(itemsMap.get(s)) + "\n";
         	}
         }
+        
         File itemsXMLFile = new File("data/Items.xml");
-        try {
-        	PrintWriter pw = new PrintWriter(itemsXMLFile);
-        	pw.print(xml);
-        	pw.close();
-        } catch (FileNotFoundException e) {
-        	e.printStackTrace();
-        }
-        return;
+      try {
+      	PrintWriter pw = new PrintWriter(itemsXMLFile);
+      	pw.print(xml);
+      	pw.close();
+      } catch (FileNotFoundException e) {
+      	e.printStackTrace();
+      }
+      return;
     }
     
 }

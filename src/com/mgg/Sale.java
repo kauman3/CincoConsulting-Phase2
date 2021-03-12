@@ -6,22 +6,57 @@ public class Sale {
 		
 	private String saleCode;
 	private String storeCode;
-	private Person customer;
-	private Person salesperson;
-	//private List<Item> items;	//will need to be a list of lists
-		//create a getter in the main item class that gets the info stored in each individual items class
+	private String customerCode;
+	private String salespersonCode;
+	private List <Item> itemsPurchased;
+	private String str1;
+	private String str2;
+	private List<String> itemInfo;
+
+	public Sale(String saleCode,
+			String storeCode, 
+			String customerCode, 
+			String salespersonCode, 
+			List <Item> itemsPurchased,
+			List<String> itemInfo) {
+	this.saleCode = saleCode;
+	this.storeCode = storeCode;
+	this.customerCode = customerCode;
+	this.salespersonCode = salespersonCode;
+	this.itemsPurchased = itemsPurchased;
+	this.itemInfo = itemInfo;
+}
 	
-	public Sale(String saleCode, String storeCode, Person customer, Person salesperson) {
-		this.saleCode = saleCode;
-		this.storeCode = storeCode;
-		this.customer = customer;
-		this.salesperson = salesperson;
-		//this.items = items;
-	}
-	
-//	public static String saleToString(Sale sale) {
-//		return this.name + " (" + this.age + ")";
+//	public Sale(String saleCode,
+//				String storeCode, 
+//				String customerCode, 
+//				String salespersonCode, 
+//				List <Item> itemsPurchased,
+//				String str1,
+//				String str2) {
+//		this.saleCode = saleCode;
+//		this.storeCode = storeCode;
+//		this.customerCode = customerCode;
+//		this.salespersonCode = salespersonCode;
+//		this.itemsPurchased = itemsPurchased;
+//		this.str1 = str1;
+//		this.str2 = str2;
 //	}
+//	
+//	public Sale(String saleCode,
+//			String storeCode, 
+//			String customerCode, 
+//			String salespersonCode, 
+//			List <Item> itemsPurchased,
+//			String str1) {
+//	this.saleCode = saleCode;
+//	this.storeCode = storeCode;
+//	this.customerCode = customerCode;
+//	this.salespersonCode = salespersonCode;
+//	this.itemsPurchased = itemsPurchased;
+//	this.str1 = str1;
+//}
+	
 	
 	//TODO: implement employeeSalesReport
 	//TODO: add documentation

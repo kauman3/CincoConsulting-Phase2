@@ -16,25 +16,25 @@ import java.util.List;
  * CSCE156<br \>
  *
  */
-public abstract class Item {
+public class Item {
 	
-	private String code;
+	//private String code;
 	private String type;
 	private String name;
 	private String price;
 	
-	public Item(String code, String type, String name, String price) {
-		this.code = code;
+	public Item(String type, String name, String price) {
+		//this.code = code;
 		this.type = type;
 		this.name = name;
 		this.price = price;
 	}
-
-	/**
-	 * @return the code
-	 */
-	public String getCode() {
-		return this.code;
+	
+	public Item(String type, String name) {
+		//this.code = code;
+		this.type = type;
+		this.name = name;
+		this.price = "";
 	}
 
 	/**
@@ -58,9 +58,4 @@ public abstract class Item {
 		return this.price;
 	}
 	
-	/**
-	 * TODO: documentation
-	 * @return
-	 */
-	public abstract List<String> getItemInfo();
 }
