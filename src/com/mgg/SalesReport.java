@@ -91,19 +91,94 @@ public class SalesReport {
 	}
 	
 	
-	public static void detailedSalesReport(Map<String, Person> persons, List<Sale> sales) {
+	public static void detailedSalesReport(Map<String, Person> persons, Map<String, Item> idToItem, List<Sale> sales) {
 
 		for (Sale s : sales) {
 			System.out.println("Sale   #" + s.getSaleCode());
 			System.out.println("Store  #" + s.getStoreCode());
 			System.out.println("Customer:");
-			System.out.print(persons.get(s.getCustomerCode()).getFullName());
-//			for(String e : persons.get(s.getCustomerCode().getEmails())) {
-//				
-//			}
+			System.out.print(persons.get(s.getCustomerCode()).getFullName() + " ([");
+			for(String e : persons.get(s.getCustomerCode()).getEmails()) {
+				
+				System.out.print(e);
+			}
+			System.out.print("])\n");
+			System.out.printf("%s\n%10s %s %s %s\n", persons.get(s.getCustomerCode()).getAddress().getStreet(),
+							   					 persons.get(s.getCustomerCode()).getAddress().getCity(),
+							   					 persons.get(s.getCustomerCode()).getAddress().getState(),
+							   					 persons.get(s.getCustomerCode()).getAddress().getZip(),
+							   					 persons.get(s.getCustomerCode()).getAddress().getCountry());
+			System.out.printf("%-50s%s\n", "Item(s)", "Total");
+			for(String str : s.getSaleDetails()) {
+//				if(idToItem.containsKey(str)) {
+//					System.out.println(idToItem.get(str).getName());
+//					if(idToItem.get(str).getType().contentEquals("PN")) {
+//						double price = Double.parseDouble(idToItem.get(str).getPrice());
+//						System.out.printf("(New Item #%s @$%f/ea)%-20s\n", str, price, price * 1);
+//					} else if(idToItem.get(str).getType().contentEquals("PU")) {
+//						
+//					} else if(idToItem.get(str).getType().contentEquals("PG")) {
+//						
+//					} else if(idToItem.get(str).getType().contentEquals("SV")) {
+//						
+//					} else {
+//						
+//					}
+//				}
+				
+				
+				for(int i=0; i<sales.size()-1; i++) {
+					if(idToItem.containsKey(str)) {
+						if(idToItem.get(str).getType().contentEquals("PN")) {
+							System.out.println(idToItem.get(str).getName());
+							double price = Double.parseDouble(idToItem.get(str).getPrice());
+							i++;
+							System.out.printf("(New Item #%s @$%.2f/ea)%20.2f\n", str, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
+						} else if(idToItem.get(str).getType().contentEquals("PU")) {
+							double price = Double.parseDouble(idToItem.get(str).getPrice()) * 0.8;
+							i++;
+							System.out.printf("(Used Item #%s @$%.2f/ea)%-50f.2\n", str, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
+						} else if(idToItem.get(str).getType().contentEquals("PG")) {
+							
+						} else if(idToItem.get(str).getType().contentEquals("SV")) {
+							
+						} else {
+							
+						}
+					}
+				}
+			}
+			
+			for(String str1 : s.getSaleDetails()) {
+				for(String str2: idToItem.keySet()) {
+					if(str1.contentEquals(str2)) {
+						if(idToItem.get(str1).getType().contentEquals("PN")) {
+							System.out.println(idToItem.get(str1).getName());
+							double price = Double.parseDouble(idToItem.get(str1).getPrice());
+							i++;
+							System.out.printf("(New Item #%s @$%.2f/ea)%20.2f\n", str1, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
+						} else if(idToItem.get(str1).getType().contentEquals("PU")) {
+							double price = Double.parseDouble(idToItem.get(str1).getPrice()) * 0.8;
+							i++;
+							System.out.printf("(Used Item #%s @$%.2f/ea)%-50f.2\n", str1, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
+						} else if(idToItem.get(str1).getType().contentEquals("PG")) {
+							
+						} else if(idToItem.get(str1).getType().contentEquals("SV")) {
+							
+						} else {
+							
+						}
+					}
+				}
+			}
+			
 		}
 		return;
 	}
+	
+	
+	//could map the id to the rest of the list of strings
+		//have to do this
 	
 	/**
 	 * TODO: add documentation
@@ -154,7 +229,7 @@ public class SalesReport {
 
 		salespersonReport(persons, idToItem, sales);
 		storeSalesReport(stores, idToItem, sales);
-		detailedSalesReport(persons, sales);
+		detailedSalesReport(persons, idToItem, sales);
 	}
 	
 }

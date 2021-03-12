@@ -136,7 +136,7 @@ public class DataConverter {
      * @param file
      * @return
      */
-public static List<Sale> loadSaleData(String file) {
+	public static List<Sale> loadSaleData(String file) {
     	
     	List<Sale> sales = new ArrayList<>();
     	try {
@@ -165,6 +165,35 @@ public static List<Sale> loadSaleData(String file) {
         }
     	return sales;
     }
+
+//	public static List<Sale> loadSaleData(String file, Map<String, Item> idToItem) {
+//	
+//	List<Sale> sales = new ArrayList<>();
+//		try {
+//	        Scanner s = new Scanner(new File(file));
+//	        String firstLine = s.nextLine();
+//	        String token[] = firstLine.split(",");
+//	        int n = Integer.parseInt(token[0]);
+//	        
+//	        for(int i=0; i<n; i++) {
+//	        	String line = s.nextLine();
+//	            String tokens[] = line.split(",");
+//	//            List<Item> items = new ArrayList<>();
+//	            Map<String, List<String>> saleDetails = new HashMap<>();
+//	            
+//	            for(int j=4; j<tokens.length; j++) {
+//	            	if(idToItem.containsKey(tokens[j])) { //was i
+//	            		saleDetails.put((tokens[j]), ); //was i
+//	              	}
+//	            }
+//	            sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], saleDetails));
+//	        }
+//	        s.close();
+//	    } catch (FileNotFoundException fnfe) {
+//	        throw new RuntimeException(fnfe);
+//	    }
+//		return sales;
+//}
 	
 	public static void main(String[] args) {
 		
