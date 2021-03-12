@@ -84,7 +84,7 @@ public class DataConverter {
                 String tokens[] = line.split(",");
                 Address address = new Address(tokens[2], tokens[3], tokens[4], tokens[5], tokens[6]);
                 for(Person p : persons) {
-                	if(tokens[1].contentEquals(p.getPersonCode())) {
+                	if(tokens[1].contentEquals(p.getCode())) {
                 		stores.add(new Store(tokens[0], p, address));
                 	}
                 }
@@ -103,7 +103,7 @@ public class DataConverter {
      */
     public static Map<String, Item> loadItemData(String file) {
     	
-    	Map<String, Item> itemsMap = new HashMap<>();
+    	Map<String, Item> idToItem = new HashMap<>();
         try {
             Scanner s = new Scanner(new File(file));
             String firstLine = s.nextLine();
@@ -114,9 +114,9 @@ public class DataConverter {
                 String line = s.nextLine();
                 String tokens[] = line.split(",");
                 if(tokens.length < 4) {
-                	itemsMap.put(tokens[0], new Item(tokens[1], tokens[2]));
+                	idToItem.put(tokens[0], new Item(tokens[1], tokens[2]));
                 } else {
-                	itemsMap.put(tokens[0], new Item(tokens[1], tokens[2], tokens[3]));
+                	idToItem.put(tokens[0], new Item(tokens[1], tokens[2], tokens[3]));
                 }
             }
             
@@ -124,11 +124,13 @@ public class DataConverter {
         } catch (FileNotFoundException fnfe) {
             throw new RuntimeException(fnfe);
         }
-        return itemsMap;
+        return idToItem;
     }
     
     /**
      * Takes a CSV file with Sales data and stores it in an ArrayList of Sales
+     * 
+     * TODO: remove cruft
      * @param file
      * @return
      */
@@ -144,30 +146,16 @@ public class DataConverter {
             for(int i=0; i<n; i++) {
             	String line = s.nextLine();
                 String tokens[] = line.split(",");
-                List<Item> items = new ArrayList<>();
-                List<String> itemsSold = new ArrayList<>();
-                String str1 = null;
-//                String str2 = "";
+//                List<Item> items = new ArrayList<>();
+                List<String> saleDetails = new ArrayList<>();
                 
                 for(int j=4; j<tokens.length; j++) {
-                	if(itemsMap.containsKey(tokens[j])) {
-                		items.add(itemsMap.get(tokens[j]));
-                		for(int k=4; k<tokens.length; k++) {
-                			str1 = tokens[k];
-                			itemsSold.add(str1);
-                		}
-//                		str1 = tokens[j+1];
-//                		if(j+2<tokens.length && !(itemsMap.containsKey(tokens[j+2]))) {
-//                			str2 = tokens[j+2];
-//                		}
-                	}
+                	saleDetails.add(tokens[j]);
+//                	if(itemsMap.containsKey(tokens[j])) { //was i
+//                		items.add(itemsMap.get(tokens[j])); //was i
+//                	}
                 }
-//                if(str2.isEmpty()) {
-//                	sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], items, str1));
-//                } else {
-//                	sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], items, str1, str2));
-//                }
-                sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], items, itemsSold));
+                sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], saleDetails));
             }
             s.close();
         } catch (FileNotFoundException fnfe) {
@@ -183,13 +171,13 @@ public class DataConverter {
         String storesFile = "data/Stores.csv";
         List<Store> stores = loadStoreData(storesFile, persons);
         String itemsFile = "data/Items.csv";
-        Map<String, Item> itemsMap = loadItemData(itemsFile);
+        Map<String, Item> idToItem = loadItemData(itemsFile);
         String salesFile = "data/Sales.csv";
-        List<Sale> sales = loadSaleData(salesFile, persons, stores, itemsMap);
+        List<Sale> sales = loadSaleData(salesFile, persons, stores, idToItem);
         
         PrintXML.personsToXML(persons);
         PrintXML.storesToXML(stores);
-        PrintXML.itemsToXML(itemsMap);
+        PrintXML.itemsToXML(idToItem);
         
         //TODO: produce reports of sales
         //Sale.employeeSalesReport(sales);

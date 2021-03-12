@@ -3,8 +3,7 @@ package com.mgg;
 import java.util.List;
 
 /**
- * This abstract class models a sales item with a code, type, name, and basePrice. Items can be
- * Products, Services, or Subscriptions.
+ * This class models a sales item with a type, name, and price.
  * 
  * @author kauman<br \>
  * Kyle Auman<br \>
@@ -18,20 +17,17 @@ import java.util.List;
  */
 public class Item {
 	
-	//private String code;
 	private String type;
 	private String name;
 	private String price;
 	
 	public Item(String type, String name, String price) {
-		//this.code = code;
 		this.type = type;
 		this.name = name;
 		this.price = price;
 	}
 	
 	public Item(String type, String name) {
-		//this.code = code;
 		this.type = type;
 		this.name = name;
 		this.price = "";

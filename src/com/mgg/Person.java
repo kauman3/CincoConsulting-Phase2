@@ -19,15 +19,15 @@ import java.util.List;
  */
 public class Person {
 	
-	private String personCode;
+	private String code;
 	private String type;
 	private String firstName;
 	private String lastName;
 	private Address address;
 	private List<String> emails;
 	
-	public Person(String personCode, String type, String firstName, String lastName, Address address, List<String> emails) {
-		this.personCode = personCode;
+	public Person(String code, String type, String firstName, String lastName, Address address, List<String> emails) {
+		this.code = code;
 		this.type = type;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -40,10 +40,10 @@ public class Person {
 	}
 
 	/**
-	 * @return the personCode
+	 * @return the Person code
 	 */
-	public String getPersonCode() {
-		return personCode;
+	public String getCode() {
+		return code;
 	}
 
 	/**
@@ -51,6 +51,13 @@ public class Person {
 	 */
 	public String getType() {
 		return type;
+	}
+	
+	/**
+	 * @return the fullName
+	 */
+	public String getFullName() {
+		return lastName + ", " + firstName;
 	}
 	
 }

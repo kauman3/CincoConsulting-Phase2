@@ -15,14 +15,28 @@ package com.mgg;
  */
 public class Store {
 	
-	private String storeCode;
+	private String code;
 	private Person manager;
 	private Address address;
 	
-	public Store(String storeCode, Person manager, Address address) {
-		this.storeCode = storeCode;
+	public Store(String code, Person manager, Address address) {
+		this.code = code;
 		this.manager = manager;
 		this.address = address;
+	}
+
+	/**
+	 * @return the Store code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * @return the manager
+	 */
+	public Person getManager() {
+		return manager;
 	}
 	
 }
