@@ -1,5 +1,8 @@
 package com.mgg;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,8 +44,11 @@ public class SalesReport {
 
 		int numCompanySales = 0;
 		double companyGrandTotal = 0;
-		System.out.println("Salesperson Summary Report");
+		System.out.println("+----------------------------+");
+        System.out.println("| Salesperson Summary Report |");
+        System.out.println("+----------------------------+\n");
 		System.out.printf("%-20s %-10s %-10s\n", "Salesperons", "# Sales", "Grand Total");
+		System.out.println("+-----------------------------------------------------+");
 		for (String str : salespersonToSales.keySet()) {
 			int numSales = salespersonToSales.get(str).size();
 			numCompanySales += numSales;
@@ -50,7 +56,9 @@ public class SalesReport {
 			companyGrandTotal += salespersonGrandTotal;
 			System.out.printf("%-20s %-10d $%10.2f\n", persons.get(str).getFullName(), numSales, salespersonGrandTotal);
 		}
-		System.out.printf("%22d %20.2f\n\n", numCompanySales, companyGrandTotal);
+		System.out.printf("%22d %20.2f\n", numCompanySales, companyGrandTotal);
+		System.out.println("-----------------------------------------------------------------");
+
 		return;
 	}
 	
@@ -76,8 +84,11 @@ public class SalesReport {
 
 		int numCompanySales = 0;
 		double companyGrandTotal = 0;
-		System.out.println("Store Sales Summary Report");
+		System.out.println("+----------------------------+");
+        System.out.println("| Store Sales Summary Report |");
+        System.out.println("+----------------------------+\n");
 		System.out.printf("%-10s %-20s %-10s %-10s\n", "Store", "Manager", "# Sales", "Grand Total");
+		System.out.println("+-----------------------------------------------------+");
 		for (Store s : storeToSales.keySet()) {
 			int numSales = storeToSales.get(s).size();
 			numCompanySales += numSales;
@@ -86,7 +97,8 @@ public class SalesReport {
 			System.out.printf("%-10s %-20s %-10d $%10.2f\n", s.getCode(), s.getManager().getFullName(), numSales,
 					salespersonGrandTotal);
 		}
-		System.out.printf("%33d %20.2f\n\n", numCompanySales, companyGrandTotal);
+		System.out.printf("%33d %20.2f\n", numCompanySales, companyGrandTotal);
+		System.out.println("-----------------------------------------------------------------");
 		return;
 	}
 	
@@ -104,81 +116,45 @@ public class SalesReport {
 			}
 			System.out.print("])\n");
 			System.out.printf("%s\n%10s %s %s %s\n", persons.get(s.getCustomerCode()).getAddress().getStreet(),
-							   					 persons.get(s.getCustomerCode()).getAddress().getCity(),
-							   					 persons.get(s.getCustomerCode()).getAddress().getState(),
-							   					 persons.get(s.getCustomerCode()).getAddress().getZip(),
-							   					 persons.get(s.getCustomerCode()).getAddress().getCountry());
+							   					 	 persons.get(s.getCustomerCode()).getAddress().getCity(),
+							   					 	 persons.get(s.getCustomerCode()).getAddress().getState(),
+							   					 	 persons.get(s.getCustomerCode()).getAddress().getZip(),
+							   					 	 persons.get(s.getCustomerCode()).getAddress().getCountry());
 			System.out.printf("%-50s%s\n", "Item(s)", "Total");
+			
+			double totalPrice = 0;
 			for(String str : s.getSaleDetails()) {
-//				if(idToItem.containsKey(str)) {
-//					System.out.println(idToItem.get(str).getName());
-//					if(idToItem.get(str).getType().contentEquals("PN")) {
-//						double price = Double.parseDouble(idToItem.get(str).getPrice());
-//						System.out.printf("(New Item #%s @$%f/ea)%-20s\n", str, price, price * 1);
-//					} else if(idToItem.get(str).getType().contentEquals("PU")) {
-//						
-//					} else if(idToItem.get(str).getType().contentEquals("PG")) {
-//						
-//					} else if(idToItem.get(str).getType().contentEquals("SV")) {
-//						
-//					} else {
-//						
-//					}
-//				}
-				
-				
-				for(int i=0; i<sales.size()-1; i++) {
-					if(idToItem.containsKey(str)) {
-						if(idToItem.get(str).getType().contentEquals("PN")) {
-							System.out.println(idToItem.get(str).getName());
-							double price = Double.parseDouble(idToItem.get(str).getPrice());
-							i++;
-							System.out.printf("(New Item #%s @$%.2f/ea)%20.2f\n", str, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
-						} else if(idToItem.get(str).getType().contentEquals("PU")) {
-							double price = Double.parseDouble(idToItem.get(str).getPrice()) * 0.8;
-							i++;
-							System.out.printf("(Used Item #%s @$%.2f/ea)%-50f.2\n", str, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
-						} else if(idToItem.get(str).getType().contentEquals("PG")) {
-							
-						} else if(idToItem.get(str).getType().contentEquals("SV")) {
-							
-						} else {
-							
-						}
+				if(idToItem.containsKey(str)) {
+					double price = 0;
+					double quantity = 1;
+					System.out.println(idToItem.get(str).getName());
+					if(idToItem.get(str).getType().contentEquals("PN")) {
+						price = Double.parseDouble(idToItem.get(str).getPrice());
+						quantity = Double.parseDouble(s.getFirstValue(str));
+						System.out.printf("     (New Item #%s @$%.2f/ea)%30.2f\n", str, price, price * quantity);
+					} else if(idToItem.get(str).getType().contentEquals("PU")) {
+						price = Double.parseDouble(idToItem.get(str).getPrice()) * 0.8;
+						quantity = Double.parseDouble(s.getFirstValue(str));
+						System.out.printf("     (Used Item #%s @$%.2f/ea)%30.2f\n", str, price, price * quantity);
+					} else if(idToItem.get(str).getType().contentEquals("PG")) {
+						price = Double.parseDouble(s.getFirstValue(str));
+						System.out.printf("     (Gift Card #%s)%30.2f\n", str, price);
+					} else if(idToItem.get(str).getType().contentEquals("SV")) {
+						price = Double.parseDouble(idToItem.get(str).getPrice());
+						quantity = Double.parseDouble(s.getSecondValue(str));
+						System.out.printf("     (Service #%s by %s %.1fhrs @$%.2f/hr)%30.2f\n", str, persons.get(s.getFirstValue(str)).getFullName(), quantity, price, price * quantity);
+					} else {
+						price = Double.parseDouble(idToItem.get(str).getPrice());
+						quantity = s.getDays(str) / 365.0;
+						System.out.printf("     (Subscription #%s %d days@$%.2f/year)%30.2f\n", str, (int) (quantity * 365), price, price * quantity);
 					}
+					totalPrice += price * quantity;
 				}
 			}
-			
-			for(String str1 : s.getSaleDetails()) {
-				for(String str2: idToItem.keySet()) {
-					if(str1.contentEquals(str2)) {
-						if(idToItem.get(str1).getType().contentEquals("PN")) {
-							System.out.println(idToItem.get(str1).getName());
-							double price = Double.parseDouble(idToItem.get(str1).getPrice());
-							i++;
-							System.out.printf("(New Item #%s @$%.2f/ea)%20.2f\n", str1, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
-						} else if(idToItem.get(str1).getType().contentEquals("PU")) {
-							double price = Double.parseDouble(idToItem.get(str1).getPrice()) * 0.8;
-							i++;
-							System.out.printf("(Used Item #%s @$%.2f/ea)%-50f.2\n", str1, price, price * Integer.parseInt(s.getSaleDetails().get(i)));
-						} else if(idToItem.get(str1).getType().contentEquals("PG")) {
-							
-						} else if(idToItem.get(str1).getType().contentEquals("SV")) {
-							
-						} else {
-							
-						}
-					}
-				}
-			}
-			
+			System.out.printf("%.2f\n", totalPrice);
 		}
 		return;
 	}
-	
-	
-	//could map the id to the rest of the list of strings
-		//have to do this
 	
 	/**
 	 * TODO: add documentation
@@ -207,7 +183,7 @@ public class SalesReport {
 						grandTotal += Double.parseDouble(idToItem.get(s.getSaleDetails().get(i)).getPrice())
 								* subscriptionLength;
 					} else {
-						int hours = Integer.parseInt(s.getSaleDetails().get(i + 2));
+						double hours = Double.parseDouble(s.getSaleDetails().get(i + 2));
 						grandTotal += Double.parseDouble(idToItem.get(s.getSaleDetails().get(i)).getPrice()) * hours;
 					}
 				}

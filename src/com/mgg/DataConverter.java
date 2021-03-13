@@ -152,6 +152,7 @@ public class DataConverter {
                 List<String> saleDetails = new ArrayList<>();
                 
                 for(int j=4; j<tokens.length; j++) {
+                	
                 	saleDetails.add(tokens[j]);
 //                	if(itemsMap.containsKey(tokens[j])) { //was i
 //                		items.add(itemsMap.get(tokens[j])); //was i
@@ -183,10 +184,10 @@ public class DataConverter {
 //	            
 //	            for(int j=4; j<tokens.length; j++) {
 //	            	if(idToItem.containsKey(tokens[j])) { //was i
-//	            		saleDetails.put((tokens[j]), ); //was i
+//	            		for(int k=j) //was i
 //	              	}
 //	            }
-//	            sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], saleDetails));
+//	            //sales.add(new Sale(tokens[0], tokens[1], tokens[2], tokens[3], saleDetails));
 //	        }
 //	        s.close();
 //	    } catch (FileNotFoundException fnfe) {
